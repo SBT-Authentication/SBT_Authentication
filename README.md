@@ -12,4 +12,4 @@ npx hardhat node
 npx hardhat run scripts/deploy.ts
 ```
 
-ssss
+ss
