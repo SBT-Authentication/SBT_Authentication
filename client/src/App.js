@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import Main from "./pages/Main";
 
 function App() {
     const [userAccount, setUserAccount] = useState({
@@ -21,13 +23,13 @@ function App() {
     const getCurrentWalletConnected = async () => {
         if (window.ethereum) {
             try {
-                console.log("aaaaaaaaaaaaaaa");
                 const addressArray = await window.ethereum.request({
                     method: "eth_accounts",
                 });
 
                 if (addressArray.length > 0) {
                     setUserAccount({ Account: addressArray[0] });
+                    console.log(addressArray);
                 }
             } catch (err) {
                 console.error(err);
@@ -41,7 +43,19 @@ function App() {
         }
     }, []);
 
-    return <div onClick={walletConnect}>연결</div>;
+    return (
+        <Routes>
+            <Route
+                path="/"
+                element={
+                    <Main
+                        currentAccount={userAccount.Account}
+                        connectWallet={walletConnect}
+                    />
+                }
+            />
+        </Routes>
+    );
 }
 
 export default App;
