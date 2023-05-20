@@ -1,0 +1,19 @@
+{
+    "image" : "https://space.coinyou.io/space/4.png",
+    "description": "Soul Bound Token",
+    "name": "PlanetSBT#4",
+    "attributes": [
+    {
+        "trait_type": "생년월일",
+        "value": "2002"
+    },
+    {
+        "trait_type": "나이",
+        "value": "22"
+    },
+    {
+      "trait_type": "성별",
+      "value": "남자"
+    }
+  ]
+}

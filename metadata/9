@@ -1,0 +1,19 @@
+{
+    "image" : "https://space.coinyou.io/space/9.png",
+    "description": "Soul Bound Token",
+    "name": "PlanetSBT#9",
+    "attributes": [
+    {
+        "trait_type": "생년월일",
+        "value": "1998"
+    },
+    {
+        "trait_type": "나이",
+        "value": "26"
+    },
+    {
+      "trait_type": "성별",
+      "value": "남자"
+    }
+  ]
+}
