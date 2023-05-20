@@ -1,59 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import Main from "./pages/Main";
+import QRcode from "./pages/QRcode";
+import QRreader from "./pages/QRreader";
 
 function App() {
-    const [userAccount, setUserAccount] = useState({
-        isConnect: "",
-        Account: "",
-    });
-    let walletConnect = async () => {
-        const accounts = await window.ethereum.request({
-            method: "eth_requestAccounts",
-        });
-        if (accounts.length > 0) {
-            localStorage.setItem("isConnected", accounts);
-            setUserAccount({ Account: accounts[0] });
-        }
-        if (accounts.length === undefined) {
-            localStorage.removeItem("isConnected");
-            setUserAccount({ Account: "" });
-        }
-    };
-    const getCurrentWalletConnected = async () => {
-        if (window.ethereum) {
-            try {
-                const addressArray = await window.ethereum.request({
-                    method: "eth_accounts",
-                });
-
-                if (addressArray.length > 0) {
-                    setUserAccount({ Account: addressArray[0] });
-                    console.log(addressArray);
-                }
-            } catch (err) {
-                console.error(err);
-            }
-        }
-    };
-
-    useEffect(() => {
-        if (userAccount.Account !== null) {
-            getCurrentWalletConnected();
-        }
-    }, []);
-
     return (
         <Routes>
-            <Route
-                path="/"
-                element={
-                    <Main
-                        currentAccount={userAccount.Account}
-                        connectWallet={walletConnect}
-                    />
-                }
-            />
+            <Route path={"/"} element={<Main />} />
+            <Route path={"/QRcode"} element={<QRcode />} />
+            <Route path={"/QRreader"} element={<QRreader />} />
         </Routes>
     );
 }
